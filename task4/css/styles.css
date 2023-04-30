@@ -1,0 +1,122 @@
+body {
+    margin: 50px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #e6e6e6;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+.delete-btn:active {
+    background-color: #f44336;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    }
+
+    #create-modal label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    #create-modal input[type="text"] {
+        padding: 5px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    #create-modal button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        cursor: pointer;
+        float: right;
+    }
+
+    #create-modal button:hover {
+        background-color: #3e8e41;
+    }
+
+    #create-modal button:active {
+        background-color: #4CAF50;
+    }
+
+    #error-message {
+        color: red;
+        margin-top: 10px;
+    }
+    #create-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        cursor: pointer;
+        float: right;
+        margin-bottom: 20px;
+    }
+
+    #create-btn:hover {
+        background-color: #3e8e41;
+    }
+
+    #create-btn:active {
+        background-color: #4CAF50;
+    }

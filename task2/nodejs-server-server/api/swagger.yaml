@@ -1,0 +1,127 @@
+---
+swagger: "2.0"
+info:
+  description: "REST API for searching, creating, and deleting 'server' objects."
+  version: "1.0.0"
+  title: "Server API"
+basePath: "/"
+tags:
+- name: "Server"
+  description: "API for servers"
+schemes:
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /servers:
+    get:
+      tags:
+      - "Server"
+      description: "Returns all servers if no parameters are passed. Returns a single\
+        \ server or 404 if there's no such a server when server id is passed as a\
+        \ parameter."
+      operationId: "serversGET"
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "ID of the server to retrieve."
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "Successful response with server(s) returned."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Server"
+        "404":
+          description: "Server not found."
+      x-swagger-router-controller: "Server"
+    put:
+      tags:
+      - "Server"
+      description: "Creates a server object. The server object is passed as a json-encoded\
+        \ message body."
+      operationId: "serversPUT"
+      parameters:
+      - in: "body"
+        name: "server"
+        description: "Server object to create."
+        required: true
+        schema:
+          $ref: "#/definitions/Server"
+      responses:
+        "201":
+          description: "Server created successfully."
+        "400":
+          description: "Invalid request format."
+      x-swagger-router-controller: "Server"
+    delete:
+      tags:
+      - "Server"
+      description: "Deletes a server object."
+      operationId: "serversDELETE"
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "ID of the server to delete."
+        required: true
+        type: "string"
+      responses:
+        "204":
+          description: "Server deleted successfully."
+        "404":
+          description: "Server not found."
+      x-swagger-router-controller: "Server"
+  /servers/find:
+    get:
+      tags:
+      - "Server"
+      description: "Finds servers by name. The parameter is a string. Must check if\
+        \ a server name contains this string and return one or more servers found.\
+        \ Returns 404 if nothing is found."
+      operationId: "serversFindGET"
+      parameters:
+      - name: "name"
+        in: "query"
+        description: "Name of the server(s) to retrieve."
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Successful response with server(s) returned."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Server"
+        "404":
+          description: "Server(s) not found."
+      x-swagger-router-controller: "Server"
+definitions:
+  Server:
+    type: "object"
+    required:
+    - "framework"
+    - "id"
+    - "language"
+    - "name"
+    properties:
+      name:
+        type: "string"
+        description: "Name of the server."
+      id:
+        type: "string"
+        description: "Unique identifier for the server."
+      language:
+        type: "string"
+        description: "Programming language used by the server."
+      framework:
+        type: "string"
+        description: "Web framework used by the server."
+    example:
+      framework: "framework"
+      name: "name"
+      language: "language"
+      id: "id"
